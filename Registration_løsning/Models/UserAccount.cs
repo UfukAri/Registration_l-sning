@@ -25,7 +25,6 @@ namespace Registration_løsning.Models
 
 
         [Required(ErrorMessage = "Feltet må fylles inn*.")]
-        [RegularExpression(@"^[A-Za-z] [A-Za-z0-9._]{5,14}$", ErrorMessage = "Skriv inn Korrekt brukernavn.")]
         public String Username { get; set; }
 
 
