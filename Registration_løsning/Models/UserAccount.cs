@@ -15,7 +15,7 @@ namespace Registration_løsning.Models
         public String Firstname { get; set; }
 
 
-        [Required(ErrorMessage = "Feltet må fylles inn*.")]
+        [Required(ErrorMessage = "Feltet må fylles inn* Hva skjer.")]
         public String Lastname { get; set; }
 
 
