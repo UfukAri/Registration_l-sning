@@ -37,15 +37,14 @@ namespace Registration_løsning.Controllers
                     db.SaveChanges();
                 }
                 ModelState.Clear();
-                ViewBag.Message = account.Firstname + " " + account.Lastname + "successfully registered.";
+                ViewBag.Message = account.Firstname + " " + account.Lastname + "Vellykket registrering.";
             }
             return View();
         }
 
-        //Login
+        //Logg inn
         public ActionResult Login()
         {
-
             return View();
         }
 
@@ -54,7 +53,7 @@ namespace Registration_løsning.Controllers
         {
             using (OurDbContext db = new OurDbContext())
             {
-                var usr = db.userAccount.Where(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
+                var usr = db.userAccount.Where(u=> u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
                 if (usr != null)
                 {
 
