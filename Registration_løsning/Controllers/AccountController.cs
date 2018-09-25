@@ -82,6 +82,12 @@ namespace Registration_løsning.Controllers
             }
         }
 
+        public ActionResult Logout()
+        {
 
+            Session.Clear();
+            return RedirectToAction("Login", "Account");
+            
+      }
     }
 }
