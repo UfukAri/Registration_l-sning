@@ -15,7 +15,7 @@ namespace Registration_løsning.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Din Hovedside.";
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }
