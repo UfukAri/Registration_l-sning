@@ -20,11 +20,13 @@ namespace Registration_løsning
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/slider.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
-                      "~/Content/Site.css"));
+                      "~/Content/Site.css", 
+                      "~/Content/slider.css"));
         }
     }
 }
