@@ -12,10 +12,11 @@ namespace Registration_løsning.Models
         public int UserID { get; set; }
 
         [Required(ErrorMessage = "Feltet må fylles inn*.")]
+        [RegularExpression(@"^(([A-Za-z]+[\s]{1}[A-Za-z]+)|([A-za-z]+))$", ErrorMessage = "Inkorrekt Fornavn.")]
         public String Firstname { get; set; }
 
 
-        [Required(ErrorMessage = "Feltet må fylles inn* Hva skjer.")]
+        [Required(ErrorMessage = "Feltet må fylles inn*")]
         public String Lastname { get; set; }
 
 
@@ -25,15 +26,16 @@ namespace Registration_løsning.Models
 
 
         [Required(ErrorMessage = "Feltet må fylles inn*.")]
+        [RegularExpression(@"^[A-Za-z0-9]{6,15}$", ErrorMessage = "Brukernavn må være tegn mellom 6-15 Bokstaver og tall")]
         public String Username { get; set; }
 
 
         [Required(ErrorMessage = "Feltet må fylles inn*.")]
-        [RegularExpression(@"^[A-Za-z0-9]{6,15}$", ErrorMessage = "Skriv inn Korrekt Passord.")]
+        [RegularExpression(@"^[A-Za-z0-9]{6,15}$", ErrorMessage = "Passordet må være tegn mellom 6-15 Bokstaver og tall")]
         [DataType(DataType.Password)]
         public String Password { get; set; }
 
-        [Compare("Password", ErrorMessage = "Ikke gjentatt passord skrevet")]
+        [Compare("Password", ErrorMessage = "Ikke samme passord skrevet.")]
         [DataType(DataType.Password)]
         public String ConfirmPassword { get; set; }
     }
