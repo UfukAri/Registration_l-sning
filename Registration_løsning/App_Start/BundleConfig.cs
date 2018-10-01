@@ -22,12 +22,13 @@ namespace Registration_løsning
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/slider.js"));
+                      "~/Scripts/Modal.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/slider.css",
-                      "~/Content/Site.css"));
+                      "~/Content/Picture.css",
+                      "~/Content/Site.css",
+                      "~/Content/modal.css"));
         }
     }
 }

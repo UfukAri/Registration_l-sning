@@ -1,0 +1,22 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 14%;
+    padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.column:hover {
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}

@@ -155,7 +155,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BestillingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KundeController.cs" />
@@ -181,7 +180,28 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\slider.css" />
+    <Content Include="Content\modal.css" />
+    <Content Include="Content\Picture.css" />
+    <Content Include="Content\Pictures\21jump.jpg" />
+    <Content Include="Content\Pictures\Black.jpg" />
+    <Content Include="Content\Pictures\CI.jpg" />
+    <Content Include="Content\Pictures\conjuring.jpg" />
+    <Content Include="Content\Pictures\conjuring2.jpg" />
+    <Content Include="Content\Pictures\dont.jpg" />
+    <Content Include="Content\Pictures\dumb.jpg" />
+    <Content Include="Content\Pictures\equalizer.jpg" />
+    <Content Include="Content\Pictures\getout.jpg" />
+    <Content Include="Content\Pictures\GH.jpg" />
+    <Content Include="Content\Pictures\hangover.jpg" />
+    <Content Include="Content\Pictures\IT.jpg" />
+    <Content Include="Content\Pictures\Logan.jpg" />
+    <Content Include="Content\Pictures\MissionImp.jpg" />
+    <Content Include="Content\Pictures\O8.jpg" />
+    <Content Include="Content\Pictures\pacific.jpg" />
+    <Content Include="Content\Pictures\saw.jpg" />
+    <Content Include="Content\Pictures\Slender.jpg" />
+    <Content Include="Content\Pictures\Ted.jpg" />
+    <Content Include="Content\slideshow.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
@@ -222,11 +242,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Modal.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\slideshow.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
@@ -263,7 +285,6 @@
     <Content Include="Views\Kunde\Liste.cshtml" />
     <Content Include="Views\Kunde\LoggedIn.cshtml" />
     <Content Include="Views\Kunde\LogIn.cshtml" />
-    <Content Include="Views\Kunde\Logout.cshtml" />
     <Content Include="Views\Kunde\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>

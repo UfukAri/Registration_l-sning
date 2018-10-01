@@ -23,6 +23,13 @@ namespace Registration_løsning.Controllers
         }
 
 
+        public ActionResult Bestilling()
+        {
+
+            return View();
+
+        }
+
 
 
         [HttpPost]

@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Registration_løsning.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Registration_løsning.Models;
 
 namespace Registration_løsning.Controllers
 {
     public class KundeController : Controller
     {
+
+
         // GET: Kunde
         public ActionResult Liste()
         {
@@ -108,7 +110,7 @@ namespace Registration_løsning.Controllers
         public ActionResult Logout()
         {
 
-            Session.Clear();
+            Session.RemoveAll();
             return RedirectToAction("LogIn", "Kunde");
 
         }
