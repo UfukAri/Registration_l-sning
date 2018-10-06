@@ -35,7 +35,7 @@
             @{
                 if (Session["UserId"] != null)
                 {
-                    @*<h4>@Session["Firstname"].ToString()</h4>*@
+                    <h4>Hello @Session["Firstname"].ToString()   </h4>
                     <div class="btn-group dropleft">
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="~/Content/Pictures/customer.png" style="width:30px; height:30px;" />
@@ -47,9 +47,9 @@
                             <a class="dropdown-item" id="test" href="/Kunde/Logout">Logg ut</a>
                         </div>
                     </div>
-                                }
-                                else
-                                {
+                }
+                else
+                {
                     <form class="form-inline my-2 my-lg-0">
                         <a class="nav-link" href="~/Kunde/Register">Register</a>
                         <a class="nav-link" href="~/Kunde/LogIn">Log in</a>

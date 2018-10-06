@@ -166,7 +166,9 @@
     <Compile Include="Models\FilmView.cs" />
     <Compile Include="Models\Kunde.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderLinje.cs" />
     <Compile Include="Models\OurDbContext.cs" />
+    <Compile Include="Models\Adresse.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -184,6 +186,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Picture.css" />
     <Content Include="Content\Pictures\21jump.jpg" />
+    <Content Include="Content\Pictures\avengers.jpg" />
     <Content Include="Content\Pictures\Black.jpg" />
     <Content Include="Content\Pictures\CI.jpg" />
     <Content Include="Content\Pictures\conjuring.jpg" />
@@ -195,6 +198,7 @@
     <Content Include="Content\Pictures\getout.jpg" />
     <Content Include="Content\Pictures\GH.jpg" />
     <Content Include="Content\Pictures\hangover.jpg" />
+    <Content Include="Content\Pictures\iron.jpg" />
     <Content Include="Content\Pictures\IT.jpg" />
     <Content Include="Content\Pictures\Logan.jpg" />
     <Content Include="Content\Pictures\MissionImp.jpg" />
@@ -202,6 +206,7 @@
     <Content Include="Content\Pictures\pacific.jpg" />
     <Content Include="Content\Pictures\saw.jpg" />
     <Content Include="Content\Pictures\Slender.jpg" />
+    <Content Include="Content\Pictures\split.jpg" />
     <Content Include="Content\Pictures\Ted.jpg" />
     <Content Include="Content\slideshow.css" />
     <Content Include="Content\toastr.css" />
@@ -293,6 +298,7 @@
     <Content Include="Views\Kunde\Logout.cshtml" />
     <Content Include="Views\Bestilling\Handelkurve.cshtml" />
     <Content Include="Views\Bestilling\Bestill.cshtml" />
+    <Content Include="Views\Bestilling\Betal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

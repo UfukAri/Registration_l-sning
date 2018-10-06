@@ -26,6 +26,13 @@ namespace Registration_løsning.Models
 
         public DbSet<Order> Order { get; set; }
 
+        public DbSet<Adresse> Adresse { get; set; }
+    
+        public DbSet<OrderLinje> OrderLinjes{ get; set; }
+
+
+
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

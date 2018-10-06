@@ -38,10 +38,20 @@ namespace Registration_løsning.Models
         [Required(ErrorMessage = "Feltet m? fylles inn*.")]
         [RegularExpression(@"^[A-Za-z0-9]{6,15}$", ErrorMessage = "Skriv inn Korrekt Passord.")]
         [DataType(DataType.Password)]
-        public String Password { get; set; }
+        public string Password { get; set; }
         public List<Order> Order { get; set; }
+        public Adresse Adresse{ get; set; }
 
 
 
     }
+
+    //public class dbKunde
+    //{
+
+    //    public int Id { get; set; }
+    //    public byte[] Password { get; set; }
+    //}
+
+
 }

@@ -4,99 +4,7 @@
     ViewBag.Title = "Register";
 }
 
-@*<h2>Register</h2>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>Kunde</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Firstname, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Lastname, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
-                </div>
-
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-
-                    <label class="col-sm-2"></label>
-                    <div class="col-sm-10">
-                        <p id="Status" />
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Register" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Liste")
-    </div>
-    <div>
-        @Html.ActionLink("Log inn", "LogIn")
-    </div>
-
-
-    <script>
-        function UserCheck() {
-
-            var check = model.Email;
-
-            $("#Status").html("Checking...");
-            $.post("@Url.Action("CheckUsernameAvailability", "Controllers")",
-                {
-                    userdata: $(model => model.Email).val()
-                },
-            function (data) {
-                if (data == 0) {
-                    $("#Status").html('<font color="Green">Available !. you can take it.</font>');
-                    $(check).css("border-color", "Green");
-
-                }
-                else {
-                    $("#Status").html('<font color="Red">That name is taken.Try Another.</font>');
-                    $(check).css("border-color", "Red");
-                }
-            });
-        }
-
-    </script>
-
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }*@
 
 
 
@@ -125,36 +33,28 @@
                                     @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
                                 </div>
-                                @*<div class="form-group">
-                                    <label for="uname1">Adresse</label>
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="uname1" id="uname1" required="">
-                                    <div class="invalid-feedback">Oops, you missed this one.</div>
-                                </div>
                                 <div class="form-group">
                                     <label>Poststed</label>
-                                    <input type="text" class="form-control form-control-lg rounded-0" id="pwd1" required="" autocomplete="new-password">
-                                    <div class="invalid-feedback">Oops, you missed this one.</div>
+                                    @Html.EditorFor(model => model.Adresse.PostSted, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Adresse.PostSted, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group">
-                                    <label for="uname1">Postnr</label>
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="uname1" id="uname1" required="">
-                                    <div class="invalid-feedback">Oops, you missed this one.</div>
-                                </div>*@
+                                    <label>Postnr</label>
+                                    @Html.EditorFor(model => model.Adresse.PostNr, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Adresse.PostNr, "", new { @class = "text-danger" })
+                                </div>
                                 <div class="form-group">
                                     <label>E-post</label>
-                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.Email, new { @id = "epost", @onchange = "UserCheck();", @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @id = "status", @onchange = "UserCheck();" })
                                 </div>
+
                                 <div class="form-group">
                                     <label>Passord</label>
                                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                 </div>
-                                @*<div class="form-group">
-                                    <label>Bekreft Passord</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" id="pwd1" required="" autocomplete="new-password">
-                                    <div class="invalid-feedback">Enter your password too!</div>
-                                </div>*@
+
                                 <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Registrer</button>
                             </form>
                         </div>
@@ -174,3 +74,31 @@
     <!--/row-->
 </div>
 <!--/container-->
+
+
+<script>
+       
+    function UserCheck() {
+        $("#status").html("Checking...");
+        $.post("@Url.Action("CheckUsernameAvailability", "Kunde")",
+            {
+                userdata: $("#epost").val()
+            },
+        function (data) {
+            if (data == 0) {
+                $("#status").html('<font color="Green">Godkjent!</font>');
+                $("#epost").css("border-color", "Green");
+
+            }
+            else {
+                $("#status").html('<font color="Red">E-post adressen er allerede tatt! Prøv igjen.</font>');
+                $("#epost").css("border-color", "Red");
+            }
+        });
+    }
+
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

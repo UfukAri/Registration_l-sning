@@ -53,9 +53,60 @@ namespace Registration_løsning.Controllers
                     db.SaveChanges();
                 }
                 ModelState.Clear();
-                ViewBag.Message = kunde.Firstname + " " + kunde.Lastname + "successfully registered.";
             }
-            return View();
+            return RedirectToAction("LogIn", "Kunde");
+
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return View();
+            //}
+
+            //using (var db = new OurDbContext())
+            //{
+            //    try
+            //    {
+            //        var nyBruker = new dbKunde();
+            //        byte[] passordDB = lagHash(kunde.Password);
+            //        nyBruker.Id = kunde.Id;
+            //        nyBruker.Password = passordDB;
+            //        db.Brukere.Add(nyBruker);
+            //        db.SaveChanges();
+            //        return RedirectToAction("Index");
+            //    }
+            //    catch
+            //    {
+            //        return View();
+            //    }
+            //}
+        }
+
+        private static byte[] lagHash(string innPassord)
+        {
+            byte[] innData, utData;
+            var algoritme = System.Security.Cryptography.SHA256.Create();
+            innData = System.Text.Encoding.ASCII.GetBytes(innPassord);
+            utData = algoritme.ComputeHash(innData);
+            return utData;
+        }
+
+        private static bool bruker_i_db(Kunde innbruker) 
+        {
+            using (var db = new OurDbContext())
+            {
+                byte[] passordDB = lagHash(innbruker.Password);
+                dbKunde funnetBruker = db.Brukere.FirstOrDefault(
+                    b => b.Password == passordDB && b.Id == innbruker.Id);
+                if(funnetBruker == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
         }
 
         public ActionResult Slett(int id)
@@ -66,12 +117,28 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("Liste");
         }
 
-        //Login
+
         public ActionResult LogIn()
         {
-
             return View();
         }
+
+        //Login
+        //[HttpPost]
+        //public ActionResult LogIn(Kunde innBruker)
+        //{
+
+        //    if (bruker_i_db(innBruker))
+        //    {
+        //        Session["LoggetInn"] = true;
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //        Session["LoggetInn"] = false;
+        //        return View();
+        //    }
+        //}
 
         [HttpPost]
         public ActionResult LogIn(Kunde user)
@@ -79,7 +146,7 @@ namespace Registration_løsning.Controllers
             using (DB db = new DB())
             {
                 var usr = db.Kunde.Where(u => u.Email == user.Email && u.Password == user.Password).FirstOrDefault();
-                if (usr != null)
+            if (usr != null)
                 {
 
                     Session["UserID"] = usr.Id.ToString();
@@ -92,7 +159,7 @@ namespace Registration_løsning.Controllers
 
                     ModelState.AddModelError("", "Brukernavn eller passord er feil.");
                 }
-            }
+        }
             return View();
 
         }

@@ -131,17 +131,38 @@ namespace Registration_løsning.Controllers
                 Session["Antall"] = filmer.Count;
             }
 
-            return RedirectToAction("Detaljer", nyFilm);
+
+            return RedirectToAction("Handelkurve", nyFilm);
+
+
         }
 
 
-
-        public ActionResult Slett(int id)
+        public ActionResult Betal()
         {
-            var Film = db.Film.SingleOrDefault(b => b.Id == id);
-            db.Film.Remove(Film);
-            db.SaveChanges();
-            return RedirectToAction("FilmListe");
+            return View();
+        }
+
+
+        
+
+        public ActionResult SlettFilmFraHandelkurve(int id)
+        {
+            var filmer = (List<Film>)Session["handelKurv"];
+            foreach (var film in filmer.ToList())
+            {
+                if (film.Id == id)
+                {
+
+                    filmer.Remove(film);
+                }
+            }
+            Session["handelKurv"] = filmer;
+
+
+            return RedirectToAction("HandelKurve");
+
+
         }
     }
 }
