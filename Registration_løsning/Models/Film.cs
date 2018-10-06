@@ -15,7 +15,7 @@ namespace Registration_løsning.Models
         public string Catrgory { get; set; }
         public List<Order> Order { get; set; }
         public string Discription { get; set; }
-
+        public string Image { get; set; }
 
 
     }

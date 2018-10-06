@@ -86,6 +86,7 @@ namespace Registration_løsning.Controllers
                 film.Pris = innFilm.Pris;
                 film.Catrgory = innFilm.Catrgory;
                 film.Discription = innFilm.Discription;
+                film.Image = innFilm.Image;
 
                 db.Film.Add(film);
                 db.SaveChanges();
@@ -95,6 +96,52 @@ namespace Registration_løsning.Controllers
 
             return RedirectToAction("FilmListe");
 
+        }
+
+
+        public ActionResult Handelkurve()
+        {
+            List<Film> filmer = new List<Film>();
+            if (Session["handelKurv"] != null)
+            {
+                filmer = (List<Film>)Session["handelKurv"];
+            }
+
+            return View(filmer);
+        }
+
+
+        public ActionResult Bestill(int id)
+        {
+            var nyFilm = db.Film.SingleOrDefault(f => f.Id == id);
+
+            if (Session["handelKurv"] == null)
+            {
+                List<Film> filmer = new List<Film>();
+                filmer.Add(nyFilm);
+                Session["handelKurv"] = filmer;
+                Session["Antall"] = filmer.Count;
+
+            }
+            else
+            {
+                List<Film> filmer = (List<Film>)Session["handelKurv"];
+                filmer.Add(nyFilm);
+                Session["handelKurv"] = filmer;
+                Session["Antall"] = filmer.Count;
+            }
+
+            return RedirectToAction("Detaljer", nyFilm);
+        }
+
+
+
+        public ActionResult Slett(int id)
+        {
+            var Film = db.Film.SingleOrDefault(b => b.Id == id);
+            db.Film.Remove(Film);
+            db.SaveChanges();
+            return RedirectToAction("FilmListe");
         }
     }
 }

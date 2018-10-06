@@ -1,0 +1,39 @@
+﻿@model Registration_løsning.Models.Film
+
+@{
+    ViewBag.Title = "Detaljer";
+}
+
+
+<!-- Page Content -->
+
+<div class="jumbotron" >
+
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">
+        @Model.Title
+    </h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-fluid" src="@Url.Content(Model.Image)" alt="" style="width:50%; height:500px;">
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="my-3">Handling</h3>
+            <p>@Model.Discription</p>
+            <a id="myBtn" href="/Bestilling/Handelkurve" class="btn btn-primary" role="button">Legg til handlekurv</a>
+            <a href="/bestilling/Bestill?id=@Model.Id" class="btn btn-primary" role="button">Kjøp: @Model.Pris</a>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+
+

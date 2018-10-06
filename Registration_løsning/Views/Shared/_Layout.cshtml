@@ -3,11 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="~/Home/Index">MovieChill</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,11 +30,33 @@
                     </form>
                 </li>
             </ul>
-            
-            <form class="form-inline my-2 my-lg-0">
-                <a class="nav-link" href="~/Kunde/Register">Register</a>
-                <a class="nav-link" href="~/Kunde/LogIn">Log in</a>
-            </form>
+
+
+            @{
+                if (Session["UserId"] != null)
+                {
+                    @*<h4>@Session["Firstname"].ToString()</h4>*@
+                    <div class="btn-group dropleft">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="~/Content/Pictures/customer.png" style="width:30px; height:30px;" />
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Min side</a>
+                            <a class="dropdown-item" href="/Bestilling/Handelkurve">Handlekurv</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" id="test" href="/Kunde/Logout">Logg ut</a>
+                        </div>
+                    </div>
+                                }
+                                else
+                                {
+                    <form class="form-inline my-2 my-lg-0">
+                        <a class="nav-link" href="~/Kunde/Register">Register</a>
+                        <a class="nav-link" href="~/Kunde/LogIn">Log in</a>
+                    </form>
+                }
+            }
+
 
         </div>
     </nav>

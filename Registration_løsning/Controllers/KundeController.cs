@@ -9,7 +9,7 @@ namespace Registration_løsning.Controllers
 {
     public class KundeController : Controller
     {
-
+        
 
         // GET: Kunde
         public ActionResult Liste()
@@ -84,6 +84,7 @@ namespace Registration_løsning.Controllers
 
                     Session["UserID"] = usr.Id.ToString();
                     Session["Email"] = usr.Email.ToString();
+                    Session["Firstname"] = usr.Firstname.ToString();
                     return RedirectToAction("LoggedIn");
                 }
                 else
@@ -99,12 +100,13 @@ namespace Registration_løsning.Controllers
         {
             if (Session["UserId"] != null)
             {
-                return View();
+                return RedirectToAction("Index", "Home");
             }
             else
             {
                 return RedirectToAction("Login");
             }
+
         }
 
         public ActionResult Logout()
@@ -115,6 +117,22 @@ namespace Registration_løsning.Controllers
 
         }
 
+        public JsonResult CheckUsernameAvailability(String userdata)
+        {
+            DB db = new DB();
+
+            System.Threading.Thread.Sleep(200);
+            var searchData = db.Kunde.Where(x => x.Email == userdata).SingleOrDefault();
+            if(searchData != null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+        }
+        
 
     }
 }

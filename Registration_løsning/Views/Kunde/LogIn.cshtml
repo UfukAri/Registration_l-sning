@@ -4,44 +4,82 @@
     ViewBag.Title = "Login";
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Vennligst logg inn</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-light text-danger" })
+        <div class="form-horizontal">
+            <h4>Vennligst logg inn</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-light text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Logg inn" class="btn btn-default" />
+                </div>
             </div>
         </div>
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div>
+        @Html.ActionLink("Tilbake til liste", "Liste")
+    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Logg inn" class="btn btn-default" />
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center text-white mb-4">MovieChill</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            <h3 class="mb-0">Logg Inn</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                                <div class="form-group">
+                                    <label for="uname1">E-post</label>
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Passord</label>
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                                <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Logg inn </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+
             </div>
+
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Tilbake til liste", "Liste")
 </div>
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
