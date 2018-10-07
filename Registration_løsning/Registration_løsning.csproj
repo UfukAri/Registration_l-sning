@@ -161,7 +161,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810062100096_InitialCreate.cs" />
+    <Compile Include="Migrations\201810062100096_InitialCreate.Designer.cs">
+      <DependentUpon>201810062100096_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810070857088_Initial.cs" />
+    <Compile Include="Migrations\201810070857088_Initial.Designer.cs">
+      <DependentUpon>201810070857088_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810070904578_Initial1.cs" />
+    <Compile Include="Migrations\201810070904578_Initial1.Designer.cs">
+      <DependentUpon>201810070904578_Initial1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DB.cs" />
+    <Compile Include="Models\DBInit.cs" />
     <Compile Include="Models\Film.cs" />
     <Compile Include="Models\FilmView.cs" />
     <Compile Include="Models\Kunde.cs" />
@@ -240,6 +254,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <None Include="Properties\PublishProfiles\Registrationløsning20181007063725 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -286,7 +301,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Bestilling\Bestilling.cshtml" />
     <Content Include="Views\Bestilling\FilmListe.cshtml" />
     <Content Include="Views\Bestilling\Leggfilm.cshtml" />
     <Content Include="Views\Bestilling\Order.cshtml" />
@@ -315,7 +329,17 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810062100096_InitialCreate.resx">
+      <DependentUpon>201810062100096_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810070857088_Initial.resx">
+      <DependentUpon>201810070857088_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810070904578_Initial1.resx">
+      <DependentUpon>201810070904578_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

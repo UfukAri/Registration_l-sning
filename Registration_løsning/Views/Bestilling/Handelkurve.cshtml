@@ -36,6 +36,8 @@
             <td>
                 <a class="btn btn-primary btn-lg" href="/bestilling/SlettFilmFraHandelkurve?id=@item.Id" style="background-color:red">Slett</a>
             </td>
+
+
         </tr>
     }
 
@@ -46,12 +48,16 @@
     @if (Session["UserId"] == null)
     {
 
-    <h4 class="text-light">Du må være innlogget</h4>
+        <a class="btn btn-primary btn-lg" href="/Home/Index" style="background-color:dodgerblue">forsett å handle</a>
+
+        <h4 class="text-light">Du må være innlogget for å gjennomføre bataling</h4>
 
     }
 
     @if (Session["UserId"] != null)
     {
+
+        <a class="btn btn-primary btn-lg" href="/Home/Index" style="background-color:dodgerblue">forsett å handle</a>
 
         <a class="btn btn-primary btn-lg" href="/bestilling/Betal?id=@Model*/" style="background-color:dodgerblue">Betal</a>
     }

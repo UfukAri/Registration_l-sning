@@ -72,6 +72,14 @@ namespace Registration_løsning.Controllers
             return View();
         }
 
+        public ActionResult SlettFilm(int id)
+        {
+            var film = db.Film.SingleOrDefault(b => b.Id == id);
+            db.Film.Remove(film);
+            db.SaveChanges();
+            return RedirectToAction("FilmListe");
+        }
+
         [HttpPost]
         public ActionResult Leggfilm(Film innFilm)
         {

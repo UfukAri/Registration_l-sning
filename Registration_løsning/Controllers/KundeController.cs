@@ -57,30 +57,9 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("LogIn", "Kunde");
 
 
-            //if (!ModelState.IsValid)
-            //{
-            //    return View();
-            //}
-
-            //using (var db = new OurDbContext())
-            //{
-            //    try
-            //    {
-            //        var nyBruker = new dbKunde();
-            //        byte[] passordDB = lagHash(kunde.Password);
-            //        nyBruker.Id = kunde.Id;
-            //        nyBruker.Password = passordDB;
-            //        db.Brukere.Add(nyBruker);
-            //        db.SaveChanges();
-            //        return RedirectToAction("Index");
-            //    }
-            //    catch
-            //    {
-            //        return View();
-            //    }
-            //}
+            
         }
-
+        // Denne laghash-metoden fungerer ikke, dette vil blir prioritert i neste oblig oppgave
         private static byte[] lagHash(string innPassord)
         {
             byte[] innData, utData;
