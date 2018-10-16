@@ -7,18 +7,23 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Registration_løsning.Models
-{ 
+{
 
     public class DB : DbContext
     {
-
-
-        public DB()
-            : base("name =film")
+        public DB() : base("name=DB")
         {
             Database.CreateIfNotExists();
 
+            // NB: Må kjøres to ganger (start/stopp/start applikasjonen) når databasen ikke eksisterer
+            Database.SetInitializer(new DBInit());
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
 
         public DbSet<Kunde> Kunde { get; set; }
 
@@ -27,18 +32,8 @@ namespace Registration_løsning.Models
         public DbSet<Order> Order { get; set; }
 
         public DbSet<Adresse> Adresse { get; set; }
-    
-        public DbSet<OrderLinje> OrderLinjes{ get; set; }
 
-
-
-
-
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
+        public DbSet<OrderLinje> OrderLinjes { get; set; }
 
 
     }
