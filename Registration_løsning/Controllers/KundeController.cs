@@ -142,9 +142,15 @@ namespace Registration_løsning.Controllers
             return View();
 
         }
+
+
         public ActionResult LoggedIn()
         {
-            if (Session["UserId"] != null)
+            if ((string)Session["Email"] == "Admin1@MovieChill.no")
+            {
+                return RedirectToAction("AdminSite", "Admin");
+            }
+            else if (Session["UserId"] != null)
             {
                 return RedirectToAction("Index", "Home");
             }

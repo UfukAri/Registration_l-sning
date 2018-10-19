@@ -342,6 +342,7 @@
     <Content Include="Views\Admin\EndreKunde.cshtml" />
     <Content Include="Views\Admin\KundeListe.cshtml" />
     <Content Include="Views\Admin\Register.cshtml" />
+    <Content Include="Views\Admin\AdminSite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

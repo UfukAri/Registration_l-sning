@@ -26,7 +26,10 @@ namespace Registration_løsning.Controllers
             return View();
         }
 
-
+        public ActionResult AdminSite()
+        {
+            return View();
+        }
 
         public ActionResult FilmListe()
         {
