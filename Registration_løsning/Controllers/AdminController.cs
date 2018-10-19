@@ -136,8 +136,8 @@ namespace Registration_løsning.Controllers
             kunde.Firstname = innCostumer.Firstname;
             kunde.Lastname = innCostumer.Lastname;
             kunde.Email = innCostumer.Email;
-            kunde.Adresse.PostSted = innCostumer.Adresse.PostSted;
-            kunde.Adresse.PostNr = innCostumer.Adresse.PostNr;
+            kunde.Poststed.PostSted = innCostumer.Poststed.PostSted;
+            kunde.Poststed.PostNr = innCostumer.Poststed.PostNr;
 
             kunde.Password = innCostumer.Password;
 

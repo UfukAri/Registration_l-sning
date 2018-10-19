@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Registration_løsning.Models
 {
-    public class Adresse
+    public class Poststed
     {
         public int Id { get; set; }
         public string PostSted { get; set; }

@@ -40,7 +40,7 @@ namespace Registration_løsning.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public List<Order> Order { get; set; }
-        public Adresse Adresse{ get; set; }
+        public Poststed Poststed { get; set; }
 
 
 
