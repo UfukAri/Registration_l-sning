@@ -16,6 +16,14 @@ namespace Registration_løsning.Models
 
 
 
+            var admin = new Kunde
+            {
+                Firstname = "Admin",
+                Lastname = "kook",
+                Email = "Admin1@MovieChill.no",
+                Password = "admin123"
+            };
+
             //Action:
             var film1 = new Film
             {
@@ -27,6 +35,8 @@ namespace Registration_løsning.Models
                 Image = "~/Content/Pictures/avengers.jpg"
             };
 
+
+            
             var film2 = new Film
             {
                 Title = "Black Panther",
@@ -290,6 +300,9 @@ namespace Registration_løsning.Models
             context.Film.Add(film19);
             context.Film.Add(film20);
             context.Film.Add(film21);
+
+            context.Kunde.Add(admin);
+
             base.Seed(context);
 
 

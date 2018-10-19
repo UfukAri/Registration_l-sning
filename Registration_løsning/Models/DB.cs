@@ -36,5 +36,6 @@ namespace Registration_løsning.Models
         public DbSet<OrderLinje> OrderLinjes { get; set; }
 
 
+
     }
 }

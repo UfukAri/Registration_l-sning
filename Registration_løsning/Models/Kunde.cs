@@ -28,7 +28,7 @@ namespace Registration_løsning.Models
 
 
         [Required(ErrorMessage = "Feltet m? fylles inn*.")]
-        [RegularExpression(@"^[A-Za-z0-9][-a-z0-9.!#$%&'*+-=?^_`{|}~\/]+@([-a-z0-9]+\.)+[a-z]{2,5}$", ErrorMessage = "Skriv inn korrekt email.")]
+        [RegularExpression(@"^[A-Za-z0-9][A-Za-z0-9.!#$%&'*+-=?^_`{|}~\/]+@([A-Za-z0-9]+\.)+[a-z]{2,5}$", ErrorMessage = "Skriv inn korrekt email.")]
         public String Email { get; set; }
 
 

@@ -178,6 +178,26 @@
     <Compile Include="Migrations\201810182204233_Init.Designer.cs">
       <DependentUpon>201810182204233_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810191000300_Init1.cs" />
+    <Compile Include="Migrations\201810191000300_Init1.Designer.cs">
+      <DependentUpon>201810191000300_Init1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810191002201_Init2.cs" />
+    <Compile Include="Migrations\201810191002201_Init2.Designer.cs">
+      <DependentUpon>201810191002201_Init2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810191025023_Init3.cs" />
+    <Compile Include="Migrations\201810191025023_Init3.Designer.cs">
+      <DependentUpon>201810191025023_Init3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810191046498_Init4.cs" />
+    <Compile Include="Migrations\201810191046498_Init4.Designer.cs">
+      <DependentUpon>201810191046498_Init4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810191105099_Init5.cs" />
+    <Compile Include="Migrations\201810191105099_Init5.Designer.cs">
+      <DependentUpon>201810191105099_Init5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DB.cs" />
     <Compile Include="Models\DBInit.cs" />
@@ -350,6 +370,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810182204233_Init.resx">
       <DependentUpon>201810182204233_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810191000300_Init1.resx">
+      <DependentUpon>201810191000300_Init1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810191002201_Init2.resx">
+      <DependentUpon>201810191002201_Init2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810191025023_Init3.resx">
+      <DependentUpon>201810191025023_Init3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810191046498_Init4.resx">
+      <DependentUpon>201810191046498_Init4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810191105099_Init5.resx">
+      <DependentUpon>201810191105099_Init5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
