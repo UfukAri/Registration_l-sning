@@ -233,17 +233,21 @@
     <Content Include="Content\Pictures\customer.png" />
     <Content Include="Content\Pictures\dont.jpg" />
     <Content Include="Content\Pictures\dumb.jpg" />
+    <Content Include="Content\Pictures\edit.png" />
     <Content Include="Content\Pictures\equalizer.jpg" />
     <Content Include="Content\Pictures\getout.jpg" />
     <Content Include="Content\Pictures\GH.jpg" />
     <Content Include="Content\Pictures\hangover.jpg" />
     <Content Include="Content\Pictures\iron.jpg" />
     <Content Include="Content\Pictures\IT.jpg" />
+    <Content Include="Content\Pictures\log.png" />
     <Content Include="Content\Pictures\Logan.jpg" />
     <Content Include="Content\Pictures\MissionImp.jpg" />
+    <Content Include="Content\Pictures\movies.png" />
     <Content Include="Content\Pictures\O8.jpg" />
     <Content Include="Content\Pictures\pacific.jpg" />
     <Content Include="Content\Pictures\saw.jpg" />
+    <Content Include="Content\Pictures\shopping.png" />
     <Content Include="Content\Pictures\Slender.jpg" />
     <Content Include="Content\Pictures\split.jpg" />
     <Content Include="Content\Pictures\Ted.jpg" />
@@ -343,6 +347,8 @@
     <Content Include="Views\Admin\KundeListe.cshtml" />
     <Content Include="Views\Admin\Register.cshtml" />
     <Content Include="Views\Admin\AdminSite.cshtml" />
+    <Content Include="Views\Admin\FilmListe.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

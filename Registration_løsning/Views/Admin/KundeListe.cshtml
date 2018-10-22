@@ -4,54 +4,61 @@
     ViewBag.Title = "KundeListe";
 }
 
-<h2>KundeListe</h2>
+<h2 style="color:white;">KundeListe</h2>
 
-<p>
+<p style="color:white;">
     @Html.ActionLink("Create New", "Register")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Firstname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lastname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Poststed.PostSted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Poststed.PostNr)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Firstname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lastname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Poststed.PostSted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Poststed.PostNr)
-        </td>
+<div style="color:white;">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Poststed.PostSted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Poststed.PostNr)
+            </th>
+            <th></th>
+        </tr>
 
-        <td>
-            @Html.ActionLink("Edit", "EndreKunde", new { id = item.Id }) |
-            @Html.ActionLink("slett", "Slett", new { id = item.Id })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Poststed.PostSted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Poststed.PostNr)
+                </td>
 
-</table>
+                <td>
+                    @Html.ActionLink("Edit", "EndreKunde", new { id = item.Id }) |
+                    @Html.ActionLink("slett", "Slett", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+

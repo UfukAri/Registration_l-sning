@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Registration_løsning.Models.Film>
+
+@{
+    ViewBag.Title = "FilmListe";
+}
+
+<h2 style="color:white;">FilmListe</h2>
+
+<p style="color:white;">
+    @Html.ActionLink("Create New", "Leggfilm")
+</p>
+
+<div style="color:white;">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pris)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Catrgory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discription)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pris)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Catrgory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discription)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "SlettFilm", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

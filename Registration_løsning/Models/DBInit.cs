@@ -9,7 +9,7 @@ using System.Data.Entity;
 namespace Registration_løsning.Models
 
 {
-    public class DBInit : DropCreateDatabaseAlways<DB>
+    public class DBInit : CreateDatabaseIfNotExists<DB>
     {
         protected override void Seed(DB context)
         {

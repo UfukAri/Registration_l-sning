@@ -31,6 +31,8 @@ namespace Registration_løsning.Controllers
             return View();
         }
 
+        
+
         public ActionResult FilmListe()
         {
             List<Models.Film> alleFilmer = db.Film.ToList();
@@ -51,7 +53,22 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("FilmListe");
         }
 
+        public ActionResult Edit(Film hent, int id)
+        {
+            var film = db.Film.SingleOrDefault(b => b.Id == id);
 
+            Film ny = new Film();
+            ny.Title = hent.Title;
+            ny.Pris = hent.Pris;
+            ny.Catrgory = hent.Catrgory;
+            ny.Discription = hent.Discription;
+
+            db.Film.Add(hent);
+            db.SaveChanges();
+
+            return RedirectToAction("FilmListe");
+
+        }
 
 
         [HttpPost]

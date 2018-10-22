@@ -3,5 +3,31 @@
     ViewBag.Title = "AdminSite";
 }
 
-<h2>Hello Admin</h2>
+<div class="jumbotron">
+    <h1 class="text-center">Velkommen Admin!</h1>
+    <p class="lead">Her har du rettigheter til å administrere Kunder, filmer og bestillinger. Du kan legge til
+                    og slette kunder, legge til, endre og slette filmer for nettsiden, og du kan også gjøre det samme
+                    for bestillinger! Vi har også logg for å sjekke hva slags endringen det har blitt gjort for nettsiden
+                    og databasen.
+    </p>
+    <hr class="my-4">
 
+        <div class="row">
+           <a href="/Admin/KundeListe" class="btn btn-primary btn-lg" style=" margin:auto; background-color:orange;">
+               <h4>Kunder</h4>
+               <img src="~/Content/Pictures/edit.png" style="width:100px; height:100px; " />
+           </a>
+           <a href="/Admin/FilmListe" class="btn-primary btn-lg" style="margin:auto; background-color:blue;">
+               <h4>Filmer</h4>
+               <img src="~/Content/Pictures/movies.png" style="width:100px; height:100px; " />
+           </a>
+           <a class="btn btn-primary btn-lg" style="margin:auto;  background-color:green;">
+               <h4>Bestillinger</h4>
+               <img src="~/Content/Pictures/shopping.png" style="width:100px; height:100px;" />
+           </a>
+           <a class="btn btn-primary btn-lg" style="margin:auto; background-color:red">
+               <h4>Logg</h4>
+               <img src="~/Content/Pictures/log.png" style="width:100px; height:100px;" />
+           </a>
+        </div>
+</div>
