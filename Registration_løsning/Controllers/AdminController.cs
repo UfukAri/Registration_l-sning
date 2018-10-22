@@ -1,6 +1,7 @@
 ﻿using Registration_løsning.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 
@@ -53,21 +54,37 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("FilmListe");
         }
 
-        public ActionResult Edit(Film hent, int id)
+       
+
+        public ActionResult Edit(int? id)
         {
-            var film = db.Film.SingleOrDefault(b => b.Id == id);
 
-            Film ny = new Film();
-            ny.Title = hent.Title;
-            ny.Pris = hent.Pris;
-            ny.Catrgory = hent.Catrgory;
-            ny.Discription = hent.Discription;
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-            db.Film.Add(hent);
-            db.SaveChanges();
+            Film film = db.Film.Find(id);
+            if(film == null)
+            {
+                return HttpNotFound();
+            }
 
-            return RedirectToAction("FilmListe");
+            return View();
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include ="Id,Title,Pris,Catrgory,Discription")] Film film)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(film).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("FilmListe");
+            }
+
+            return View();
         }
 
 
