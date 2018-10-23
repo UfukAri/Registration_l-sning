@@ -149,43 +149,42 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("Liste");
         }
 
-        //public ActionResult KundeListe()
-        //{
-        //    List<Models.Kunde> alleKunder = db.Kunde.ToList();
+        public ActionResult KundeListe()
+        {
+            List<Models.Kunde> alleKunder = db.Kunde.ToList();
 
-        //    return View(alleKunder);
-        //}
+            return View(alleKunder);
+        }
 
-        //public ActionResult EditKunde()
-        //{
-        //    return View();
-        //}
+        public ActionResult EditKunde()
+        {
+            return View();
+        }
 
 
-        //[HttpGet]
-        //public ActionResult EditKunde(Kunde innCostumer)
-        //{
-        //    // hent det ønskede elementet man vil endre
-        //    var usr = db.Kunde.Where(u => u.Id == innCostumer.Id).FirstOrDefault();
+        [HttpGet]
+        public ActionResult EditKunde(Kunde innCostumer)
+        {
+            // hent det ønskede elementet man vil endre
+            var usr = db.Kunde.Where(u => u.Id == innCostumer.Id).FirstOrDefault();
            
-        //    // endre en attributt
-        //    Kunde kunde = new Kunde();
-        //    kunde.Firstname = innCostumer.Firstname;
-        //    kunde.Lastname = innCostumer.Lastname;
-        //    kunde.Email = innCostumer.Email;
-        //    //kunde.Poststed.PostSted = innCostumer.Poststed.PostSted;
-        //    //kunde.Poststed.PostNr = innCostumer.Poststed.PostNr;
+            // endre en attributt
+            usr.Firstname = innCostumer.Firstname;
+            usr.Lastname = innCostumer.Lastname;
+            usr.Email = innCostumer.Email;
+            //kunde.Poststed.PostSted = innCostumer.Poststed.PostSted;
+            //kunde.Poststed.PostNr = innCostumer.Poststed.PostNr;
 
-        //    kunde.Password = innCostumer.Password;
+            usr.Password = innCostumer.Password;
 
-        //    // lagre endringene
-        //    db.Kunde.Add(usr);
-        //    db.SaveChanges();
-
+            // lagre endringene
+            db.Kunde.Add(usr);
+            db.SaveChanges();
 
 
-        //    return RedirectToAction("Liste");
-        //}
+
+            return RedirectToAction("Liste");
+        }
 
         //public ActionResult EditKunde(int? id)
         //{

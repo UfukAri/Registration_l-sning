@@ -9,22 +9,30 @@ using System.Data.Entity;
 namespace Registration_løsning.Models
 
 {
-    public class DBInit : CreateDatabaseIfNotExists<DB>
+    public class DBInit : DropCreateDatabaseAlways<DB>
     {
         protected override void Seed(DB context)
         {
 
 
 
-            /*
+
             var admin = new Kunde
             {
                 Firstname = "Admin",
                 Lastname = "kook",
                 Email = "Admin1@MovieChill.no",
-                Password = "admin123"
+                Password = "admin123",
+                PoststedId =3,
             };
-            */
+
+            var adrisse = new Poststed
+            {
+                Id = 3,
+                PostNr = "312",
+                PostSted = "Oslo",
+            };
+
 
             //Action:
             var film1 = new Film
@@ -302,6 +310,12 @@ namespace Registration_løsning.Models
             context.Film.Add(film19);
             context.Film.Add(film20);
             context.Film.Add(film21);
+
+            context.Kunde.Add(admin);
+            context.Postsed.Add(adrisse);
+
+
+
 
             //context.Kunde.Add(admin);
 
