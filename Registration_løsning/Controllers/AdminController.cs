@@ -149,6 +149,47 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("Liste");
         }
 
+        public ActionResult HentKunde(int id)
+        {
+                        // hent alle ordre, med dato og antall, som har ordrelinjer som har varer med navnet "Skruer 3mm"
+
+            var kunde1 = db.Postsed.Join(db.Kunde,
+                                                         p => p.Id,
+                                                         k => k.Id,
+                                                         (k, p) => new Kunde
+                                                         {
+                                                             //PostNr = k.PostNr,
+                                                             //PostSted = k.PostSted,
+                                                             Firstname =p.Firstname
+                                                             
+
+                                                             
+                                                         })
+                                                         .Where(Kunde => Kunde.Id == id);
+           
+
+            return View();
+           
+        }
+        //public ActionResult Endre(int id)
+        //{
+        //    var db = new DB();
+        //    Kunde enKunde = db.HentKunde(id);
+        //    return View(enKunde);
+        //}
+
+        //[HttpPost]
+        //public ActionResult Endre(Kunde innKunde)
+        //{
+        //    var db = new DB();
+        //    bool OK = db.endreKunde(innKunde);
+        //    if (OK)
+        //    {
+        //        return RedirectToAction("Liste");
+        //    }
+        //    return View();
+        //}
+
         public ActionResult KundeListe()
         {
             List<Models.Kunde> alleKunder = db.Kunde.ToList();
@@ -156,34 +197,37 @@ namespace Registration_løsning.Controllers
             return View(alleKunder);
         }
 
-        public ActionResult EditKunde()
+        public ActionResult EditKunde(int id )
         {
-            return View();
+            var usr = db.Kunde.Find(id);
+            return View(usr);
         }
 
 
-        [HttpGet]
-        public ActionResult EditKunde(Kunde innCostumer)
+        [HttpPost]
+        public ActionResult EditKunde(Kunde innCostumer, int id)
         {
             // hent det ønskede elementet man vil endre
             var usr = db.Kunde.Where(u => u.Id == innCostumer.Id).FirstOrDefault();
-           
+            var innCustomerPoststed = db.Postsed.Find(innCostumer.PoststedId);
+
             // endre en attributt
+
             usr.Firstname = innCostumer.Firstname;
             usr.Lastname = innCostumer.Lastname;
             usr.Email = innCostumer.Email;
-            //kunde.Poststed.PostSted = innCostumer.Poststed.PostSted;
-            //kunde.Poststed.PostNr = innCostumer.Poststed.PostNr;
+            usr.PoststedId = innCostumer.PoststedId;
+            usr.Poststed.PostSted = innCustomerPoststed.PostSted;
+            usr.Poststed.PostNr = innCustomerPoststed.PostNr;
 
             usr.Password = innCostumer.Password;
 
             // lagre endringene
-            db.Kunde.Add(usr);
             db.SaveChanges();
 
 
 
-            return RedirectToAction("Liste");
+            return RedirectToAction("KundeListe");
         }
 
         //public ActionResult EditKunde(int? id)
