@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Registration_løsning.Models
 
@@ -40,7 +41,9 @@ namespace Registration_løsning.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public List<Order> Order { get; set; }
-        public Poststed Poststed { get; set; }
+        [ForeignKey("Poststed")]
+        public int PoststedId { get; set; }
+        public virtual Poststed Poststed { get; set; }
 
 
 

@@ -1,38 +1,38 @@
-﻿@model IEnumerable<Registration_løsning.Models.Kunde>
+﻿@model IList<Registration_løsning.Models.Kunde>
 
-@{
+    @{
     ViewBag.Title = "KundeListe";
-}
+    }
 
-<h2 style="color:white;">KundeListe</h2>
+    <h2 style="color:white;">KundeListe</h2>
 
-<p style="color:white;">
-    @Html.ActionLink("Create New", "Register")
-</p>
+    <p style="color:white;">
+        @Html.ActionLink("Create New", "Register")
+    </p>
 
-<div style="color:white;">
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Firstname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Lastname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Poststed.PostSted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Poststed.PostNr)
-            </th>
-            <th></th>
-        </tr>
+    <div style="color:white;">
+        <table class="table">
+            <tr>
+                <th>
+                    Firstname
+                </th>
+                <th>
+                    Lastname
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    PostSted
+                </th>
+                <th>
+                    PostNr
+                </th>
+                <th></th>
+            </tr>
 
-        @foreach (var item in Model)
-        {
+            @foreach (var item in Model)
+            {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Firstname)
@@ -51,14 +51,14 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink("Edit", "EndreKunde", new { id = item.Id }) |
+                    @Html.ActionLink("Edit", "EditKunde", new { id = item.Id }) |
                     @Html.ActionLink("slett", "Slett", new { id = item.Id })
                 </td>
             </tr>
-        }
+            }
 
-    </table>
+        </table>
 
-</div>
+    </div>
 
 

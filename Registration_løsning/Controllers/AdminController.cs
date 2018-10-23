@@ -149,43 +149,73 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("Liste");
         }
 
-        public ActionResult KundeListe()
-        {
-            List<Models.Kunde> alleKunder = db.Kunde.ToList();
+        //public ActionResult KundeListe()
+        //{
+        //    List<Models.Kunde> alleKunder = db.Kunde.ToList();
 
-            return View(alleKunder);
-        }
+        //    return View(alleKunder);
+        //}
 
-        public ActionResult EndreKunde()
-        {
-            return View();
-        }
-
-
-        [HttpGet]
-        public ActionResult EndreKunde(Kunde innCostumer)
-        {
-            // hent det ønskede elementet man vil endre
-            var usr = db.Kunde.Where(u => u.Id == innCostumer.Id).FirstOrDefault();
-
-            // endre en attributt
-            Kunde kunde = new Kunde();
-            kunde.Firstname = innCostumer.Firstname;
-            kunde.Lastname = innCostumer.Lastname;
-            kunde.Email = innCostumer.Email;
-            kunde.Poststed.PostSted = innCostumer.Poststed.PostSted;
-            kunde.Poststed.PostNr = innCostumer.Poststed.PostNr;
-
-            kunde.Password = innCostumer.Password;
-
-            // lagre endringene
-            db.Kunde.Add(kunde);
-            db.SaveChanges();
+        //public ActionResult EditKunde()
+        //{
+        //    return View();
+        //}
 
 
+        //[HttpGet]
+        //public ActionResult EditKunde(Kunde innCostumer)
+        //{
+        //    // hent det ønskede elementet man vil endre
+        //    var usr = db.Kunde.Where(u => u.Id == innCostumer.Id).FirstOrDefault();
+           
+        //    // endre en attributt
+        //    Kunde kunde = new Kunde();
+        //    kunde.Firstname = innCostumer.Firstname;
+        //    kunde.Lastname = innCostumer.Lastname;
+        //    kunde.Email = innCostumer.Email;
+        //    //kunde.Poststed.PostSted = innCostumer.Poststed.PostSted;
+        //    //kunde.Poststed.PostNr = innCostumer.Poststed.PostNr;
 
-            return RedirectToAction("Liste");
-        }
+        //    kunde.Password = innCostumer.Password;
 
+        //    // lagre endringene
+        //    db.Kunde.Add(usr);
+        //    db.SaveChanges();
+
+
+
+        //    return RedirectToAction("Liste");
+        //}
+
+        //public ActionResult EditKunde(int? id)
+        //{
+
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+
+        //    Kunde film = db.Kunde.Find(id);
+        //    if (film == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult EditKunde([Bind(Include = "Firstname,Lastname,Email,Password,PostSted,PostNr")] Kunde Kunde, Poststed poststed)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(Kunde).State = System.Data.Entity.EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("KundeListe");
+        //    }
+
+        //    return View();
+        //}
     }
 }

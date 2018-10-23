@@ -16,6 +16,7 @@ namespace Registration_løsning.Models
 
 
 
+            /*
             var admin = new Kunde
             {
                 Firstname = "Admin",
@@ -23,6 +24,7 @@ namespace Registration_løsning.Models
                 Email = "Admin1@MovieChill.no",
                 Password = "admin123"
             };
+            */
 
             //Action:
             var film1 = new Film
@@ -301,7 +303,7 @@ namespace Registration_løsning.Models
             context.Film.Add(film20);
             context.Film.Add(film21);
 
-            context.Kunde.Add(admin);
+            //context.Kunde.Add(admin);
 
             base.Seed(context);
 
