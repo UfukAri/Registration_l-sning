@@ -9,7 +9,7 @@ using System.Data.Entity;
 namespace Registration_løsning.Models
 
 {
-    public class DBInit : CreateDatabaseIfNotExists<DB>
+    public class DBInit : DropCreateDatabaseAlways<DB>
     {
         protected override void Seed(DB context)
         {
@@ -312,7 +312,7 @@ namespace Registration_løsning.Models
             context.Film.Add(film21);
 
             context.Kunde.Add(admin);
-            context.Postsed.Add(adrisse);
+            context.Poststed.Add(adrisse);
 
 
 

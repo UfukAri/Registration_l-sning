@@ -149,28 +149,28 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("Liste");
         }
 
-        public ActionResult HentKunde(int id)
-        {
-                        // hent alle ordre, med dato og antall, som har ordrelinjer som har varer med navnet "Skruer 3mm"
+        //public ActionResult HentKunde(int id)
+        //{
+        //                // hent alle ordre, med dato og antall, som har ordrelinjer som har varer med navnet "Skruer 3mm"
 
-            var kunde1 = db.Postsed.Join(db.Kunde,
-                                                         p => p.Id,
-                                                         k => k.Id,
-                                                         (k, p) => new Kunde
-                                                         {
-                                                             //PostNr = k.PostNr,
-                                                             //PostSted = k.PostSted,
-                                                             Firstname =p.Firstname
+        //    var kunde1 = db.Postsed.Join(db.Kunde,
+        //                                                 p => p.Id,
+        //                                                 k => k.Id,
+        //                                                 (k, p) => new Kunde
+        //                                                 {
+        //                                                     //PostNr = k.PostNr,
+        //                                                     //PostSted = k.PostSted,
+        //                                                     Firstname =p.Firstname
                                                              
 
                                                              
-                                                         })
-                                                         .Where(Kunde => Kunde.Id == id);
+        //                                                 })
+        //                                                 .Where(Kunde => Kunde.Id == id);
            
 
-            return View();
+        //    return View();
            
-        }
+        //}
         //public ActionResult Endre(int id)
         //{
         //    var db = new DB();
@@ -209,7 +209,7 @@ namespace Registration_løsning.Controllers
         {
             // hent det ønskede elementet man vil endre
             var usr = db.Kunde.Where(u => u.Id == innCostumer.Id).FirstOrDefault();
-            var innCustomerPoststed = db.Postsed.Find(innCostumer.PoststedId);
+            var innCustomerPoststed = db.Poststed.Find(innCostumer.PoststedId);
 
             // endre en attributt
 
@@ -217,8 +217,8 @@ namespace Registration_løsning.Controllers
             usr.Lastname = innCostumer.Lastname;
             usr.Email = innCostumer.Email;
             usr.PoststedId = innCostumer.PoststedId;
-            usr.Poststed.PostSted = innCustomerPoststed.PostSted;
-            usr.Poststed.PostNr = innCustomerPoststed.PostNr;
+            //usr.Poststed.PostSted = innCustomerPoststed.PostSted;
+            //usr.Poststed.PostNr = innCustomerPoststed.PostNr;
 
             usr.Password = innCostumer.Password;
 

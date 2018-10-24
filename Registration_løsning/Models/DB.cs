@@ -31,7 +31,7 @@ namespace Registration_løsning.Models
 
         public DbSet<Order> Order { get; set; }
 
-        public DbSet<Poststed> Postsed { get; set; }
+        public DbSet<Poststed> Poststed { get; set; }
 
         public DbSet<OrderLinje> OrderLinjes { get; set; }
 
