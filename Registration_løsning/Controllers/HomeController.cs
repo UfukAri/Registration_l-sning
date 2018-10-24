@@ -1,4 +1,5 @@
-﻿using Registration_løsning.Models;
+﻿using DAL;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

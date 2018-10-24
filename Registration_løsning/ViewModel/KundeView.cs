@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Registration_løsning.Models;
+﻿using System.Collections.Generic;
+using Model;
 
 
 namespace Registration_løsning.ViewModel

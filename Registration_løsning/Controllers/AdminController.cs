@@ -1,4 +1,5 @@
-﻿using Registration_løsning.Models;
+﻿using DAL;
+using Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -36,7 +37,7 @@ namespace Registration_løsning.Controllers
 
         public ActionResult FilmListe()
         {
-            List<Models.Film> alleFilmer = db.Film.ToList();
+            List<Model.Film> alleFilmer = db.Film.ToList();
 
             return View(alleFilmer);
         }
@@ -192,7 +193,7 @@ namespace Registration_løsning.Controllers
 
         public ActionResult KundeListe()
         {
-            List<Models.Kunde> alleKunder = db.Kunde.ToList();
+            List<Model.Kunde> alleKunder = db.Kunde.ToList();
 
             return View(alleKunder);
         }

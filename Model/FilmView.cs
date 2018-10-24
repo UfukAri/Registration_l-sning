@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Registration_løsning.Models
+namespace Model
 {
     public class FilmView
     {
-
         public List<Film> Action { get; set; }
         public List<Film> Komedie { get; set; }
         public List<Film> Horror { get; set; }

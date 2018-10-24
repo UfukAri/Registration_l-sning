@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Registration_løsning.Models;
+using DAL;
+using Model;
 
 
 namespace Registration_løsning.Controllers
@@ -52,7 +53,7 @@ namespace Registration_løsning.Controllers
 
         public ActionResult Order()
         {
-            List<Models.Order> alleOrder = db.Order.ToList();
+            List<Model.Order> alleOrder = db.Order.ToList();
 
             return View(alleOrder);
         }
@@ -62,7 +63,7 @@ namespace Registration_løsning.Controllers
         /*--------------------------------------------------------------------------*/
         public ActionResult FilmListe()
         {
-            List<Models.Film> alleFilmer = db.Film.ToList();
+            List<Model.Film> alleFilmer = db.Film.ToList();
 
             return View(alleFilmer);
         }

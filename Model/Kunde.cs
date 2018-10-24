@@ -1,13 +1,12 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Registration_løsning.Models
-
+namespace Model
 {
     public class Kunde
     {
@@ -49,12 +48,34 @@ namespace Registration_løsning.Models
 
     }
 
-    //public class dbKunde
-    //{
+    public class dbKunde
+    {
 
-    //    public int Id { get; set; }
-    //    public byte[] Password { get; set; }
-    //}
+        public int Id { get; set; }
+        public byte[] Password { get; set; }
 
+        [Required(ErrorMessage = "Feltet m? fylles inn*.")]
+        [RegularExpression(@"^(([A-Za-z]+[\s]{1}[A-Za-z]+)|([A-za-z]+))$", ErrorMessage = "Inkorrekt Fornavn.")]
+
+        public String Firstname { get; set; }
+
+
+        [Required(ErrorMessage = "Feltet m? fylles inn* Hva skjer.")]
+        [RegularExpression(@"^(([A-Za-z]+[\s]{1}[A-Za-z]+)|([A-za-z]+))$", ErrorMessage = "Inkorrekt Fornavn.")]
+
+        public String Lastname { get; set; }
+
+
+
+        [Required(ErrorMessage = "Feltet m? fylles inn*.")]
+        [RegularExpression(@"^[A-Za-z0-9][A-Za-z0-9.!#$%&'*+-=?^_`{|}~\/]+@([A-Za-z0-9]+\.)+[a-z]{2,5}$", ErrorMessage = "Skriv inn korrekt email.")]
+        public String Email { get; set; }
+
+        public List<Order> Order { get; set; }
+        [ForeignKey("Poststed")]
+        public int PoststedId { get; set; }
+        public virtual Poststed Poststed { get; set; }
+
+    }
 
 }

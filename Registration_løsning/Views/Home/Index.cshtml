@@ -1,4 +1,4 @@
-﻿@model Registration_løsning.Models.FilmView
+﻿@model Model.FilmView
 
 @{
     ViewBag.Title = "Home Page";
@@ -15,7 +15,7 @@
     {
 
         <div class="column" data-toggle="modal" data-target="#exampleModal">
-            <a id="myBtn" href="/Home/Detaljer?id=@film.Id">
+            <a id="myBtn" href="/Home/Detaljer?id=@film.Id">    
                 <img src="@Url.Content(film.Image)" style="width:100%;" />
             </a>
         </div>

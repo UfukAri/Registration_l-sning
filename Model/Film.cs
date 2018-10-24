@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-
-namespace Registration_løsning.Models
-
+namespace Model
 {
     public class Film
     {
@@ -16,7 +15,5 @@ namespace Registration_løsning.Models
         public List<Order> Order { get; set; }
         public string Discription { get; set; }
         public string Image { get; set; }
-
-
     }
 }

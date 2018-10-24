@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-/*áÇÒã  äÌíÈåã */
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Registration_løsning.Models
+namespace DAL
 {
-
     public class DB : DbContext
     {
         public DB() : base("name=DB")
@@ -26,6 +26,7 @@ namespace Registration_løsning.Models
 
 
         public DbSet<Kunde> Kunde { get; set; }
+        public DbSet<dbKunde> Kunder { get; set; }
 
         public DbSet<Film> Film { get; set; }
 
