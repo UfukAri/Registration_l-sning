@@ -130,7 +130,12 @@ namespace Registration_løsning.Controllers
 
                     Session["UserID"] = usr.Id.ToString();
                     Session["Email"] = usr.Email.ToString();
+                    Session["Passord"] = usr.Password.ToString();
                     Session["Firstname"] = usr.Firstname.ToString();
+                    Session["Lastname"] = usr.Lastname.ToString();
+                    Session["Email"] = usr.Email.ToString();
+                    Session["Poststed"] = usr.Poststed.PostSted.ToString();
+                    Session["Postnr"] = usr.Poststed.PostNr.ToString();
                     return RedirectToAction("LoggedIn");
                 }
                 else
@@ -143,6 +148,45 @@ namespace Registration_løsning.Controllers
 
         }
 
+        public ActionResult MinSide()
+        {
+            return View();
+        }
+
+
+
+        public ActionResult EditKunde(int id)
+        {
+            var usr = db.Kunde.Find(id);
+            return View(usr);
+        }
+
+
+        [HttpPost]
+        public ActionResult EditKunde(Kunde innCostumer, int id)
+        {
+            // hent det ønskede elementet man vil endre
+            var usr = db.Kunde.Where(u => u.Id == innCostumer.Id).FirstOrDefault();
+            var innCustomerPoststed = db.Poststed.Find(innCostumer.PoststedId);
+
+            // endre en attributt
+
+            usr.Firstname = innCostumer.Firstname;
+            usr.Lastname = innCostumer.Lastname;
+            usr.Email = innCostumer.Email;
+            usr.PoststedId = innCostumer.PoststedId;
+            usr.Poststed.PostSted = innCustomerPoststed.PostSted;
+            usr.Poststed.PostNr = innCustomerPoststed.PostNr;
+
+            usr.Password = innCostumer.Password;
+
+            // lagre endringene
+            db.SaveChanges();
+
+
+
+            return RedirectToAction("KundeListe");
+        }
 
         public ActionResult LoggedIn()
         {
@@ -185,6 +229,7 @@ namespace Registration_løsning.Controllers
             }
         }
         
+
 
     }
 }

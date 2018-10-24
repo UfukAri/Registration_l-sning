@@ -312,6 +312,8 @@
     <Content Include="Views\Admin\FilmListe.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\EditKunde.cshtml" />
+    <Content Include="Views\Kunde\MinSide.cshtml" />
+    <Content Include="Views\Kunde\EditKunde.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

@@ -41,10 +41,22 @@
                             <img src="~/Content/Pictures/customer.png" style="width:30px; height:30px;" />
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/Admin/AdminSite/">Min side</a>
-                            <a class="dropdown-item" href="/Bestilling/Handelkurve">Handlekurv</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" id="test" href="/Kunde/Logout">Logg ut</a>
+                            @{
+                                if ((string)Session["Email"] == "Admin1@MovieChill.no")
+                                {
+                                    <a class="dropdown-item" href="/Admin/AdminSite/">Min side</a>
+                                    <a class="dropdown-item" href="/Bestilling/Handelkurve">Handlekurv</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" id="test" href="/Kunde/Logout">Logg ut</a>
+                                }
+                                else
+                                {
+                                    <a class="dropdown-item" href="/Kunde/MinSide/">Min side</a>
+                                    <a class="dropdown-item" href="/Bestilling/Handelkurve">Handlekurv</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" id="test" href="/Kunde/Logout">Logg ut</a>
+                                }
+                            }
                         </div>
                     </div>
                 }

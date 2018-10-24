@@ -217,8 +217,8 @@ namespace Registration_løsning.Controllers
             usr.Lastname = innCostumer.Lastname;
             usr.Email = innCostumer.Email;
             usr.PoststedId = innCostumer.PoststedId;
-            //usr.Poststed.PostSted = innCustomerPoststed.PostSted;
-            //usr.Poststed.PostNr = innCustomerPoststed.PostNr;
+            usr.Poststed.PostSted = innCustomerPoststed.PostSted;
+            usr.Poststed.PostNr = innCustomerPoststed.PostNr;
 
             usr.Password = innCostumer.Password;
 
