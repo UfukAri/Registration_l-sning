@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DAL;
@@ -24,32 +25,34 @@ namespace Registration_løsning.Controllers
         }
 
 
-        public ActionResult Bestilling()
-        {
+        //public ActionResult Bestilling()
+        //{
 
-            return View();
+        //    return View();
 
-        }
-
-
-
-        [HttpPost]
-        public ActionResult Bestilling(Order innOrder)
-        {
-
-            Order order = new Order();
-            order.Film = innOrder.Film;
-            order.Kunde = innOrder.Kunde;
-
-
-            db.Order.Add(order);
-            db.SaveChanges();
+        //}
 
 
 
-            return RedirectToAction("Order");
+        //[HttpPost]
+        //public ActionResult Bestilling(Order innOrder)
+        //{
 
-        }
+        //    Order order = new Order();
+        //    order.Film = innOrder.Film;
+        //    order.Kunde = innOrder.Kunde;
+
+
+        //    db.Order.Add(order);
+        //    db.SaveChanges();
+
+
+
+        //    return RedirectToAction("Order");
+
+        //}
+
+
 
         public ActionResult Order()
         {
@@ -173,5 +176,58 @@ namespace Registration_løsning.Controllers
 
 
         }
+        //Legger kjøpt film til ordre og ordrelinje tabellen. 
+        public ActionResult LeggFilmtilOrder()
+        {
+            var filmer = (List<Film>)Session["handelKurv"];
+            // henter kunden
+            int id = Convert.ToInt32(Session["UserID"]);
+            var kunde = db.Kunder.Find(id);
+
+            // Lager ordre
+            var order = new Order();
+
+
+            List<OrderLinje> ordrelinjer = new List<OrderLinje>();
+            // Lager ordrelinjer 
+            foreach (var film in filmer)
+            {
+                var ordrelinje = new OrderLinje();
+                ordrelinje.FilmId = film.Id;
+                ordrelinje.OrderId = order.Id;
+                ordrelinjer.Add(ordrelinje);
+            }
+
+            // Lenker ordre og ordrelinje 
+
+            order.OrdreLinjer = ordrelinjer;
+            order.dbKundeId = kunde.Id;
+
+            // Lenker kunde og ordre
+
+            // Her sjekkes hvis kunde har ordre fra f?r 
+            if (kunde.Ordrer != null)
+            {
+                kunde.Ordrer.Add(order);
+            }
+            else
+            {
+                // lager ny liste 
+                List<Order> ordreListe = new List<Order>();
+                ordreListe.Add(order);
+                kunde.Ordrer = ordreListe;
+            }
+
+
+            // lagre endringen
+            db.SaveChanges();
+
+
+            Session["handelKurv"] = null;
+
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

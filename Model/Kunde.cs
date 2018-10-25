@@ -44,9 +44,9 @@ namespace Model
         public int PoststedId { get; set; }
         public virtual Poststed Poststed { get; set; }
 
-
-
+     
     }
+
 
     public class dbKunde
     {
@@ -71,11 +71,12 @@ namespace Model
         [RegularExpression(@"^[A-Za-z0-9][A-Za-z0-9.!#$%&'*+-=?^_`{|}~\/]+@([A-Za-z0-9]+\.)+[a-z]{2,5}$", ErrorMessage = "Skriv inn korrekt email.")]
         public String Email { get; set; }
 
-        public List<Order> Order { get; set; }
+        public List<Order> Ordrer { get; set; }
         [ForeignKey("Poststed")]
         public int PoststedId { get; set; }
         public virtual Poststed Poststed { get; set; }
 
     }
+
 
 }

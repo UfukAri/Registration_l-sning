@@ -9,7 +9,12 @@ namespace Model
     public class Order
     {
         public int Id { get; set; }
-        public Kunde Kunde { get; set; }
-        public Film Film { get; set; }
+        public virtual int dbKundeId { get; set; }
+        public dbKunde Kunde { get; set; }
+
+
+        public List<OrderLinje> OrdreLinjer { get; set; }
+
+
     }
 }

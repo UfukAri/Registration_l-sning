@@ -12,7 +12,7 @@ namespace Model
         [Key]
         public int Id { get; set; }
         public string PostSted { get; set; }
-        public string PostNr { get; set; }
+        public int PostNr { get; set; }
         public virtual List<Kunde> Kunde { get; set; }
     }
 }

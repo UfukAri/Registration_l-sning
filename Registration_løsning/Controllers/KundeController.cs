@@ -263,6 +263,8 @@ namespace Registration_løsning.Controllers
         public ActionResult Logout()
         {
 
+            Session["handelKurv"] = null;
+
             Session.RemoveAll();
             return RedirectToAction("LogIn", "Kunde");
 

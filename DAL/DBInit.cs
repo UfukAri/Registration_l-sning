@@ -26,7 +26,7 @@ namespace DAL
                 var adrisse = new Poststed
                 {
                     Id = 3,
-                    PostNr = "312",
+                    PostNr = 312,
                     PostSted = "Oslo",
                 };
 
