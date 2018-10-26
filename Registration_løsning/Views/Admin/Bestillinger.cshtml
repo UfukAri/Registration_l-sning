@@ -1,0 +1,43 @@
+﻿@model List<Registration_løsning.ViewModel.OrderViewModel>
+
+@{
+    ViewBag.Title = "OrderListe";
+}
+
+<h2>OrderListe</h2>
+<div class="text-white ">
+    <table class="table">
+        <tr>
+            <th>
+                Ordernummer
+            </th>
+            <th>
+                Kunde
+            </th>
+            <th> Filmer   </th>
+        </tr>
+
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>
+                    @order.OrderId
+                </td>
+                <td>
+                    @order.Kunde.Firstname    @order.Kunde.Lastname
+                </td>
+                <td>
+                    @foreach (var ordrelinje in order.OrderLinjer)
+                    {
+                        <ul>
+                            <li> @ordrelinje.Film.Title</li>
+                        </ul>
+                    }
+                </td>
+                <td class="text-success">    <i class="far fa-trash-alt"></i> Slett </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

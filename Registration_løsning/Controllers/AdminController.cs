@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using Registration_løsning.ViewModel;
 
 
 
@@ -28,12 +29,44 @@ namespace Registration_løsning.Controllers
             return View();
         }
 
+        public ActionResult Bestillinger()
+        {
+            // Henter alle ordre 
+            var ordre = db.Order.ToList();
+            // Liste av orderviewModel
+            var orderViewModelListe = new List<OrderViewModel>();
+            foreach (var order in ordre)
+            {
+
+                // hent kunde 
+                var kunde = db.Kunder.Find(order.dbKundeId);
+                // hent ordrelinje for hver ordre
+                var ordrelinjer = db.OrderLinjes.Where(ol => ol.OrderId == order.Id).ToList();
+                // hent filmer til hver ordrelinjer
+                foreach (var ol in ordrelinjer)
+                {
+                    var film = db.Film.Find(ol.FilmId);
+                    ol.Film = film;
+                }
+                var ordreView = new OrderViewModel();
+                ordreView.OrderId = order.Id;
+                ordreView.Kunde = kunde;
+                ordreView.OrderLinjer = ordrelinjer;
+                // Legger den til liste
+                orderViewModelListe.Add(ordreView);
+            }
+
+
+
+            return View(orderViewModelListe);
+        }
+
         public ActionResult AdminSite()
         {
             return View();
         }
 
-        
+
 
         public ActionResult FilmListe()
         {
@@ -55,18 +88,18 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("FilmListe");
         }
 
-       
+
 
         public ActionResult Edit(int? id)
         {
 
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             Film film = db.Film.Find(id);
-            if(film == null)
+            if (film == null)
             {
                 return HttpNotFound();
             }
@@ -76,7 +109,7 @@ namespace Registration_løsning.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include ="Id,Title,Pris,Catrgory,Discription")] Film film)
+        public ActionResult Edit([Bind(Include = "Id,Title,Pris,Catrgory,Discription")] Film film)
         {
             if (ModelState.IsValid)
             {
@@ -144,7 +177,7 @@ namespace Registration_løsning.Controllers
 
         public ActionResult Slett(int id)
         {
-            var Kunde = db.Kunde.SingleOrDefault(b => b.Id == id);
+            var Kunde = db.Kunde.SingleOrDefault(b => b.id == id);
             db.Kunde.Remove(Kunde);
             db.SaveChanges();
             return RedirectToAction("Liste");
@@ -162,15 +195,15 @@ namespace Registration_løsning.Controllers
         //                                                     //PostNr = k.PostNr,
         //                                                     //PostSted = k.PostSted,
         //                                                     Firstname =p.Firstname
-                                                             
 
-                                                             
+
+
         //                                                 })
         //                                                 .Where(Kunde => Kunde.Id == id);
-           
+
 
         //    return View();
-           
+
         //}
         //public ActionResult Endre(int id)
         //{
@@ -193,38 +226,44 @@ namespace Registration_løsning.Controllers
 
         public ActionResult KundeListe()
         {
-            List<Model.Kunde> alleKunder = db.Kunde.ToList();
+            List<Model.dbKunde> alleKunder = db.Kunder.ToList();
 
             return View(alleKunder);
         }
 
-        public ActionResult EditKunde(int id )
+        public ActionResult EditKunde(int id)
         {
-            var usr = db.Kunde.Find(id);
-            return View(usr);
+            var kunde = db.Kunder.Find(id);
+
+            return View(kunde);
         }
 
 
         [HttpPost]
-        public ActionResult EditKunde(Kunde innCostumer, int id)
+        public ActionResult EditKunde(dbKunde innCostumer, int id)
         {
-            // hent det ønskede elementet man vil endre
-            var usr = db.Kunde.Where(u => u.Id == innCostumer.Id).FirstOrDefault();
-            var innCustomerPoststed = db.Poststed.Find(innCostumer.PoststedId);
 
-            // endre en attributt
+            using (var db = new DB())
+            {
+                // hent det ønskede elementet man vil endre
+                var usr = db.Kunder.Find(id);
+                if (usr.Poststed != null) usr.Poststed = innCostumer.Poststed;
+                var usrPoststed = db.Poststed.Find(innCostumer.PoststedId);
 
-            usr.Firstname = innCostumer.Firstname;
-            usr.Lastname = innCostumer.Lastname;
-            usr.Email = innCostumer.Email;
-            usr.PoststedId = innCostumer.PoststedId;
-            usr.Poststed.PostSted = innCustomerPoststed.PostSted;
-            usr.Poststed.PostNr = innCustomerPoststed.PostNr;
+                // endre en attributt
 
-            usr.Password = innCostumer.Password;
+                usr.Firstname = innCostumer.Firstname;
+                usr.Lastname = innCostumer.Lastname;
+                usr.Email = innCostumer.Email;
+                usr.PoststedId = innCostumer.PoststedId;
+                usr.Poststed.PostSted = innCostumer.Poststed.PostSted;
+                usr.Poststed.PostNr = innCostumer.Poststed.PostNr;
 
-            // lagre endringene
-            db.SaveChanges();
+
+                // lagre endringene
+                db.SaveChanges();
+
+            }
 
 
 

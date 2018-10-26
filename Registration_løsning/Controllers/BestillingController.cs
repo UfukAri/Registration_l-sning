@@ -156,7 +156,7 @@ namespace Registration_løsning.Controllers
         }
 
 
-        
+
 
         public ActionResult SlettFilmFraHandelkurve(int id)
         {
@@ -201,7 +201,7 @@ namespace Registration_løsning.Controllers
             // Lenker ordre og ordrelinje 
 
             order.OrdreLinjer = ordrelinjer;
-            order.dbKundeId = kunde.Id;
+            order.dbKundeId = kunde.id;
 
             // Lenker kunde og ordre
 

@@ -11,8 +11,8 @@ namespace Model
     public class Kunde
     {
 
-        [Key]
-        public int Id { get; set; }
+
+        public int id { get; set; }
 
         [Required(ErrorMessage = "Feltet m? fylles inn*.")]
         [RegularExpression(@"^(([A-Za-z]+[\s]{1}[A-Za-z]+)|([A-za-z]+))$", ErrorMessage = "Inkorrekt Fornavn.")]
@@ -44,14 +44,14 @@ namespace Model
         public int PoststedId { get; set; }
         public virtual Poststed Poststed { get; set; }
 
-     
+
     }
 
 
     public class dbKunde
     {
 
-        public int Id { get; set; }
+        public int id { get; set; }
         public byte[] Password { get; set; }
 
         [Required(ErrorMessage = "Feltet m? fylles inn*.")]
