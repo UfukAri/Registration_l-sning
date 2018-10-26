@@ -10,7 +10,7 @@ namespace Registration_løsning.Controllers
 {
     public class KundeController : Controller
     {
-        
+
 
         // GET: Kunde
         public ActionResult Liste()
@@ -52,7 +52,7 @@ namespace Registration_løsning.Controllers
                 using (var db = new DB())
                 {
                     var bruker = db.Kunder.SingleOrDefault(k => k.Email == kunde.Email);
-                    if(bruker == null)
+                    if (bruker == null)
                     {
                         var nyBruker = new dbKunde();
 
@@ -71,7 +71,7 @@ namespace Registration_løsning.Controllers
                         return View();
                     }
 
-                   
+
                 }
             }
             return RedirectToAction("LogIn", "Kunde");
@@ -139,7 +139,7 @@ namespace Registration_løsning.Controllers
 
         public ActionResult Slett(int id)
         {
-            var Kunde = db.Kunde.SingleOrDefault(b => b.Id == id);
+            var Kunde = db.Kunde.SingleOrDefault(b => b.id == id);
             db.Kunde.Remove(Kunde);
             db.SaveChanges();
             return RedirectToAction("Liste");
@@ -160,7 +160,7 @@ namespace Registration_løsning.Controllers
             {
                 Session["LoggetInn"] = true;
                 var usr = db.Kunder.SingleOrDefault(k => k.Email == innBruker.Email);
-                Session["UserID"] = usr.Id.ToString();
+                Session["UserID"] = usr.id.ToString();
                 Session["Email"] = usr.Email.ToString();
                 Session["Passord"] = usr.Password.ToString();
                 Session["Firstname"] = usr.Firstname.ToString();
@@ -221,7 +221,7 @@ namespace Registration_løsning.Controllers
         public ActionResult EditKunde(Kunde innCostumer, int id)
         {
             // hent det ønskede elementet man vil endre
-            var usr = db.Kunde.Where(u => u.Id == innCostumer.Id).FirstOrDefault();
+            var usr = db.Kunde.Where(u => u.id == innCostumer.id).FirstOrDefault();
             var innCustomerPoststed = db.Poststed.Find(innCostumer.PoststedId);
 
             // endre en attributt
@@ -276,7 +276,7 @@ namespace Registration_løsning.Controllers
 
             System.Threading.Thread.Sleep(200);
             var searchData = db.Kunde.Where(x => x.Email == userdata).SingleOrDefault();
-            if(searchData != null)
+            if (searchData != null)
             {
                 return Json(1);
             }
@@ -285,7 +285,7 @@ namespace Registration_løsning.Controllers
                 return Json(0);
             }
         }
-        
+
 
 
     }

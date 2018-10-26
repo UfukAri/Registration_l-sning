@@ -14,7 +14,7 @@ namespace Registration_løsning.Controllers
 
         DB db = new DB();
 
-        
+
 
         public ActionResult Index()
         {
@@ -29,7 +29,7 @@ namespace Registration_løsning.Controllers
                 Action = dbfilm2,
                 Horror = dbfilm3,
             };
-            
+
             return View(filmType);
         }
 
