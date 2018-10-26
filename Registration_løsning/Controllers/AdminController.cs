@@ -142,6 +142,18 @@ namespace Registration_løsning.Controllers
 
         }
 
+        public ActionResult LoggedIn()
+        {
+            if ((string)Session["Email"] == "Admin1@MovieChill.no")
+            {
+                return RedirectToAction("AdminSite", "Admin");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
         public ActionResult Slett(int id)
         {
             var Kunde = db.Kunde.SingleOrDefault(b => b.Id == id);
