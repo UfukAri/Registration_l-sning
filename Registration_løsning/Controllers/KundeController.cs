@@ -45,7 +45,7 @@ namespace Registration_løsning.Controllers
         [HttpPost]
         public ActionResult Register(Kunde kunde)
         {
-
+            KundeDAL DAL = new KundeDAL();
 
             if (ModelState.IsValid)
             {
@@ -77,34 +77,13 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("LogIn", "Kunde");
 
 
-            //if (!ModelState.IsValid)
+            //if (ModelState.IsValid)
             //{
-            //    return View();
+            //    DAL.Registrering(kunde);
             //}
 
-            //using (var db = new DB())
-            //{
-            //    try
-            //    {
-            //        var nyBruker = new dbKunde();
 
-            //        byte[] passordDB = lagHash(kunde.Password);
-            //        nyBruker.Password = passordDB;
-            //        nyBruker.Email = kunde.Email;
-            //        nyBruker.Firstname = kunde.Firstname;
-            //        nyBruker.Lastname = kunde.Lastname;
-            //        nyBruker.Poststed.PostSted = kunde.Poststed.PostSted;
-            //        nyBruker.Poststed.PostNr = kunde.Poststed.PostNr;
-
-            //        db.Kunder.Add(nyBruker);
-            //        return RedirectToAction("LogIn", "Kunde");
-
-            //    }
-            //    catch (Exception feil)
-            //    {
-            //        return RedirectToAction("Index", "Home");
-            //    }
-            //}
+            //return RedirectToAction("LogIn", "Kunde");
 
 
         }
@@ -155,8 +134,9 @@ namespace Registration_løsning.Controllers
         [HttpPost]
         public ActionResult LogIn(Kunde innBruker)
         {
+            KundeDAL hent = new KundeDAL();
 
-            if (bruker_i_db(innBruker))
+            if (hent.bruker_i_db(innBruker))
             {
                 Session["LoggetInn"] = true;
                 var usr = db.Kunder.SingleOrDefault(k => k.Email == innBruker.Email);

@@ -13,7 +13,14 @@ namespace Registration_løsning.Controllers
     public class AdminController : Controller
     {
 
+
         DB db = new DB();
+        private AdminRepositoryStub adminRepositoryStub;
+
+        public AdminController(AdminRepositoryStub adminRepositoryStub)
+        {
+            this.adminRepositoryStub = adminRepositoryStub;
+        }
 
         protected override void Dispose(bool disposing)
         {
@@ -82,9 +89,10 @@ namespace Registration_løsning.Controllers
 
         public ActionResult SlettFilm(int id)
         {
-            var film = db.Film.SingleOrDefault(b => b.Id == id);
-            db.Film.Remove(film);
-            db.SaveChanges();
+            
+            AdminDal slett = new AdminDal();
+
+            slett.SlettFilm(id);
             return RedirectToAction("FilmListe");
         }
 
@@ -111,10 +119,14 @@ namespace Registration_løsning.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Pris,Catrgory,Discription")] Film film)
         {
+
+            AdminDal admin = new AdminDal();
+
             if (ModelState.IsValid)
             {
-                db.Entry(film).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+               
+                admin.EditFilm(film);
+
                 return RedirectToAction("FilmListe");
             }
 
@@ -125,24 +137,9 @@ namespace Registration_løsning.Controllers
         [HttpPost]
         public ActionResult Leggfilm(Film innFilm)
         {
-            // Sjekk hvis kunden eksisterer 
+            AdminDal legg = new AdminDal();
 
-            var dbFilm = db.Film.SingleOrDefault(k => k.Title == innFilm.Title);
-
-            if (dbFilm == null)
-            {
-                Film film = new Film();
-                film.Title = innFilm.Title;
-                film.Pris = innFilm.Pris;
-                film.Catrgory = innFilm.Catrgory;
-                film.Discription = innFilm.Discription;
-                film.Image = innFilm.Image;
-
-                db.Film.Add(film);
-                db.SaveChanges();
-
-                return RedirectToAction("FilmListe");
-            }
+            legg.LeggFilm(innFilm);
 
             return RedirectToAction("FilmListe");
 
@@ -156,24 +153,24 @@ namespace Registration_løsning.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Register(Kunde kunde)
-        {
+        //[HttpPost]
+        //public ActionResult Register(Kunde kunde)
+        //{
 
-            if (ModelState.IsValid)
-            {
-                using (DB db = new DB())
-                {
-                    db.Kunde.Add(kunde);
-                    db.SaveChanges();
-                }
-                ModelState.Clear();
-            }
-            return RedirectToAction("LogIn", "Kunde");
+        //    if (ModelState.IsValid)
+        //    {
+        //        using (DB db = new DB())
+        //        {
+        //            db.Kunde.Add(kunde);
+        //            db.SaveChanges();
+        //        }
+        //        ModelState.Clear();
+        //    }
+        //    return RedirectToAction("LogIn", "Kunde");
 
 
 
-        }
+        //}
 
         public ActionResult LoggedIn()
         {
