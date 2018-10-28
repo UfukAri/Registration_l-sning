@@ -5,8 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Registration_løsning.ViewModel;
-
-
+using log4net;
+using System.Web;
+using System.IO;
 
 namespace Registration_løsning.Controllers
 {
@@ -17,10 +18,10 @@ namespace Registration_løsning.Controllers
         DB db = new DB();
         private AdminRepositoryStub adminRepositoryStub;
 
-        public AdminController(AdminRepositoryStub adminRepositoryStub)
-        {
-            this.adminRepositoryStub = adminRepositoryStub;
-        }
+        //public AdminController(AdminRepositoryStub adminRepositoryStub)
+        //{
+        //    this.adminRepositoryStub = adminRepositoryStub;
+        //}
 
         protected override void Dispose(bool disposing)
         {
@@ -115,6 +116,7 @@ namespace Registration_løsning.Controllers
             return View();
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Pris,Catrgory,Discription")] Film film)
@@ -124,7 +126,7 @@ namespace Registration_løsning.Controllers
 
             if (ModelState.IsValid)
             {
-               
+
                 admin.EditFilm(film);
 
                 return RedirectToAction("FilmListe");
@@ -132,6 +134,9 @@ namespace Registration_løsning.Controllers
 
             return View();
         }
+
+
+
 
 
         [HttpPost]
@@ -153,34 +158,20 @@ namespace Registration_løsning.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Register(Kunde kunde)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        using (DB db = new DB())
-        //        {
-        //            db.Kunde.Add(kunde);
-        //            db.SaveChanges();
-        //        }
-        //        ModelState.Clear();
-        //    }
-        //    return RedirectToAction("LogIn", "Kunde");
-
-
-
-        //}
-
-        public ActionResult LoggedIn()
+       
+       
+        public ActionResult AdminLogIn(string Email, string password)
         {
-            if ((string)Session["Email"] == "Admin1@MovieChill.no")
+
+            if(Email == "Admin@MovieChill.no" && password == "admin123")
             {
-                return RedirectToAction("AdminSite", "Admin");
+                Session["Email"] = Email;
+                Session["Firstname"] = "Admin";
+                return RedirectToAction("AdminSite");
             }
             else
             {
-                return RedirectToAction("Login");
+                return View();
             }
         }
 
@@ -192,46 +183,6 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("Liste");
         }
 
-        //public ActionResult HentKunde(int id)
-        //{
-        //                // hent alle ordre, med dato og antall, som har ordrelinjer som har varer med navnet "Skruer 3mm"
-
-        //    var kunde1 = db.Postsed.Join(db.Kunde,
-        //                                                 p => p.Id,
-        //                                                 k => k.Id,
-        //                                                 (k, p) => new Kunde
-        //                                                 {
-        //                                                     //PostNr = k.PostNr,
-        //                                                     //PostSted = k.PostSted,
-        //                                                     Firstname =p.Firstname
-
-
-
-        //                                                 })
-        //                                                 .Where(Kunde => Kunde.Id == id);
-
-
-        //    return View();
-
-        //}
-        //public ActionResult Endre(int id)
-        //{
-        //    var db = new DB();
-        //    Kunde enKunde = db.HentKunde(id);
-        //    return View(enKunde);
-        //}
-
-        //[HttpPost]
-        //public ActionResult Endre(Kunde innKunde)
-        //{
-        //    var db = new DB();
-        //    bool OK = db.endreKunde(innKunde);
-        //    if (OK)
-        //    {
-        //        return RedirectToAction("Liste");
-        //    }
-        //    return View();
-        //}
 
         public ActionResult KundeListe()
         {
@@ -279,35 +230,18 @@ namespace Registration_løsning.Controllers
             return RedirectToAction("KundeListe");
         }
 
-        //public ActionResult EditKunde(int? id)
-        //{
+        
 
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
+        private static log4net.ILog Log { get; set; }
 
-        //    Kunde film = db.Kunde.Find(id);
-        //    if (film == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+        ILog log = log4net.LogManager.GetLogger(typeof(AdminController));
 
-        //    return View();
-        //}
+        public ActionResult Logg()
+        {
+           
+            var fileContents = System.IO.File.ReadAllText(Server.MapPath("~/Views/Admin/Logg.txt"));
+            return Content(fileContents);
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult EditKunde([Bind(Include = "Firstname,Lastname,Email,Password,PostSted,PostNr")] Kunde Kunde, Poststed poststed)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(Kunde).State = System.Data.Entity.EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("KundeListe");
-        //    }
-
-        //    return View();
-        //}
+        }
     }
 }

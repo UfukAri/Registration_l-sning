@@ -9,19 +9,11 @@ using System.Threading.Tasks;
 namespace DAL
 {
 
-    public class DBInit : CreateDatabaseIfNotExists<DB>
+    public class DBInit : DropCreateDatabaseAlways<DB>
     {
+        
         protected override void Seed(DB context)
         {
-
-            var admin = new Kunde
-            {
-                Firstname = "Admin",
-                Lastname = "kook",
-                Email = "Admin1@MovieChill.no",
-                Password = "admin123",
-                PoststedId = 3,
-            };
 
             var adrisse = new Poststed
             {
@@ -308,7 +300,6 @@ namespace DAL
             context.Film.Add(film20);
             context.Film.Add(film21);
 
-            context.Kunde.Add(admin);
             context.Poststed.Add(adrisse);
 
 

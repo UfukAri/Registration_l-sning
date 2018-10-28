@@ -13,12 +13,18 @@ namespace DAL
 
         public Film EditFilm(Film film)
         {
+            string temp = film.Title;
             db.Entry(film).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
 
+
+
+            System.IO.File.WriteAllText(@"C:\Users\jab_a\source\repos\Registration_l-sning\Registration_løsning\Views\Admin\Logg.txt", "Filmen " + temp + " har blitt redigert fra databasen");
+            
             return film;
         }
 
+       
         public Film LeggFilm(Film innFilm)
         {
             var dbFilm = db.Film.SingleOrDefault(k => k.Title == innFilm.Title);
@@ -37,7 +43,7 @@ namespace DAL
 
             }
 
-
+            System.IO.File.WriteAllText(@"C:\Users\jab_a\source\repos\Registration_l-sning\Registration_løsning\Views\Admin\Logg.txt", "Filmen " + innFilm.Title + " har blitt lagt til databasen");
             return innFilm;
         }
 
@@ -46,6 +52,7 @@ namespace DAL
             var film = db.Film.SingleOrDefault(b => b.Id == id);
             db.Film.Remove(film);
             db.SaveChanges();
+            System.IO.File.WriteAllText(@"C:\Users\jab_a\source\repos\Registration_l-sning\Registration_løsning\Views\Admin\Logg.txt", "Filmen " + film.Title + " har blitt slettet fra databasen");
 
             return id;
         }

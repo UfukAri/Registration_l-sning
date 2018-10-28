@@ -76,6 +76,7 @@ namespace Model
         public int PoststedId { get; set; }
         public virtual Poststed Poststed { get; set; }
 
+       
     }
 
 

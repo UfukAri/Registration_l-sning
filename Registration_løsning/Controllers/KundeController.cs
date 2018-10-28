@@ -71,7 +71,6 @@ namespace Registration_løsning.Controllers
                         return View();
                     }
 
-
                 }
             }
             return RedirectToAction("LogIn", "Kunde");
@@ -130,7 +129,7 @@ namespace Registration_løsning.Controllers
             return View();
         }
 
-        ////Login
+        ////Login   
         [HttpPost]
         public ActionResult LogIn(Kunde innBruker)
         {
@@ -138,14 +137,19 @@ namespace Registration_løsning.Controllers
 
             if (hent.bruker_i_db(innBruker))
             {
-                Session["LoggetInn"] = true;
-                var usr = db.Kunder.SingleOrDefault(k => k.Email == innBruker.Email);
-                Session["UserID"] = usr.id.ToString();
-                Session["Email"] = usr.Email.ToString();
-                Session["Passord"] = usr.Password.ToString();
-                Session["Firstname"] = usr.Firstname.ToString();
-                Session["Lastname"] = usr.Lastname.ToString();
-                return RedirectToAction("Index", "Home");
+               
+                    Session["LoggetInn"] = true;
+                    var usr = db.Kunder.SingleOrDefault(k => k.Email == innBruker.Email);
+                    Session["UserID"] = usr.id.ToString();
+                    Session["Email"] = usr.Email.ToString();
+                    Session["Passord"] = usr.Password.ToString();
+                    Session["Firstname"] = usr.Firstname.ToString();
+                    Session["Lastname"] = usr.Lastname.ToString();
+                    Session["Poststed"] = usr.Poststed.PostSted.ToString();
+                    Session["Postnr"] = usr.Poststed.PostNr.ToString();
+                    return RedirectToAction("Index", "Home");
+                
+               
             }
             else
             {
@@ -154,38 +158,11 @@ namespace Registration_løsning.Controllers
             }
         }
 
-        //[HttpPost]
-        //public ActionResult LogIn(Kunde user)
-        //{
-        //    using (DB db = new DB())
-        //    {
-        //        var usr = db.Kunde.Where(u => u.Email == user.Email && u.Password == user.Password).FirstOrDefault();
-        //    if (usr != null)
-        //        {
-
-        //            Session["UserID"] = usr.Id.ToString();
-        //            Session["Email"] = usr.Email.ToString();
-        //            Session["Passord"] = usr.Password.ToString();
-        //            Session["Firstname"] = usr.Firstname.ToString();
-        //            Session["Lastname"] = usr.Lastname.ToString();
-        //            Session["Email"] = usr.Email.ToString();
-        //            Session["Poststed"] = usr.Poststed.PostSted.ToString();
-        //            Session["Postnr"] = usr.Poststed.PostNr.ToString();
-        //            return RedirectToAction("LoggedIn");
-        //        }
-        //        else
-        //        {
-
-        //            ModelState.AddModelError("", "Brukernavn eller passord er feil.");
-        //        }
-        //}
-        //    return View();
-
-        //}
+       
 
         public ActionResult MinSide()
         {
-            return View();
+            return View();  
         }
 
 
@@ -217,28 +194,11 @@ namespace Registration_løsning.Controllers
 
             // lagre endringene
             db.SaveChanges();
-
-
-
+            
             return RedirectToAction("KundeListe");
         }
 
-        public ActionResult LoggedIn()
-        {
-            if ((string)Session["Email"] == "Admin1@MovieChill.no")
-            {
-                return RedirectToAction("AdminSite", "Admin");
-            }
-            else if (Session["UserId"] != null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-
-        }
+        
 
         public ActionResult Logout()
         {

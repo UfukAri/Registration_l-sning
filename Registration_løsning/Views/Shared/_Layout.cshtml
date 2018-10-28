@@ -31,7 +31,6 @@
                 </li>
             </ul>
 
-
             @{
                 if (Session["UserId"] != null)
                 {
@@ -41,32 +40,43 @@
                             <img src="~/Content/Pictures/customer.png" style="width:30px; height:30px;" />
                         </button>
                         <div class="dropdown-menu">
-                            @{
-                                if ((string)Session["Email"] == "Admin1@MovieChill.no")
-                                {
-                                    <a class="dropdown-item" href="/Admin/AdminSite/">Min side</a>
-                                    <a class="dropdown-item" href="/Bestilling/Handelkurve">Handlekurv</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" id="test" href="/Kunde/Logout">Logg ut</a>
-                                }
-                                else
-                                {
-                                    <a class="dropdown-item" href="/Kunde/MinSide/">Min side</a>
-                                    <a class="dropdown-item" href="/Bestilling/Handelkurve">Handlekurv</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" id="test" href="/Kunde/Logout">Logg ut</a>
-                                }
-                            }
+
+
+                            <a class="dropdown-item" href="/Kunde/MinSide/">Min side</a>
+                            <a class="dropdown-item" href="/Bestilling/Handelkurve">Handlekurv</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" id="test" href="/Kunde/Logout">Logg ut</a>
                         </div>
                     </div>
                 }
                 else
                 {
-                    <form class="form-inline my-2 my-lg-0">
-                        <a class="nav-link" href="~/Kunde/Register">Register</a>
-                        <a class="nav-link" href="~/Kunde/LogIn">Log in</a>
-                    </form>
+                    if ((string) Session["Email"] != "Admin@MovieChill.no")
+                    {
+                        <form class="form-inline my-2 my-lg-0">
+                            <a class="nav-link" href="~/Kunde/Register">Register</a>
+                            <a class="nav-link" href="~/Kunde/LogIn">Logg inn</a>
+                        </form>
+                    }
                 }
+            }
+                    
+
+            @{
+                if ((string)Session["Email"] == "Admin@MovieChill.no")
+                {
+                    <div class="btn-group dropleft">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="~/Content/Pictures/customer.png" style="width:30px; height:30px;" />
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/Admin/AdminSite/">Min side</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" id="test" href="/Kunde/Logout">Logg ut</a>
+                        </div>
+                    </div>
+                }
+               
             }
 
 

@@ -1,0 +1,4 @@
+DEBUG 2018-10-28 16:04:50,292 31515ms AdminController        Logg               - Debug message
+WARN  2018-10-28 16:04:50,328 31551ms AdminController        Logg               - Warn message
+ERROR 2018-10-28 16:04:50,329 31552ms AdminController        Logg               - Error message
+FATAL 2018-10-28 16:04:50,329 31552ms AdminController        Logg               - Fatal message

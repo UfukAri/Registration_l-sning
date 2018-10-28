@@ -1,4 +1,4 @@
-﻿@model Model.Kunde
+﻿@model Model.dbKunde
 @{
     ViewBag.Title = "MinSide";
 }
@@ -26,14 +26,14 @@
 
                 <div class="col-xs-6">
                     <label for="first_name">Fornavn</label>
-                    @Html.DisplayForModel(Model.Firstname)
+                    @Session["Firstname"].ToString()
                 </div>
             </div>
             <div class="form-group">
 
                 <div class="col-xs-6">
                     <label for="last_name">Etternavn</label>
-                    @Html.DisplayForModel(Model.Lastname)
+                    @Session["Lastname"].ToString()
                 </div>
             </div>
 
@@ -41,35 +41,35 @@
 
                 <div class="col-xs-6">
                     <label for="phone">Poststed</label>
-                    @Html.DisplayForModel(Model.Poststed.PostSted)
+                    @Session["Poststed"].ToString()
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-xs-6">
                     <label for="mobile">Postnr</label>
-                    @Html.DisplayForModel(Model.Poststed.PostNr)
+                    @Session["Postnr"].ToString()
                 </div>
             </div>
             <div class="form-group">
 
                 <div class="col-xs-6">
                     <label for="email">E-post</label>
-                    @Html.DisplayForModel(Model.Email)
+                    @Session["Email"].ToString()
                 </div>
             </div>
             <div class="form-group">
 
                 <div class="col-xs-6">
                     <label for="email">Passord</label>
-                    @Html.DisplayForModel(Model.Password)
+                    @Session["Passord"].ToString()
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-xs-12">
                     <br>
-                    <a class="btn btn-lg btn-success" href="/Kunde/EditKunde"><i class="glyphicon glyphicon-ok-sign"></i> Rediger</a>
+                    <a class="btn btn-lg btn-success" href="/Kunde/EditKunde?id=@Model*"><i class="glyphicon glyphicon-ok-sign"></i> Rediger</a>
                     <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                 </div>
             </div>
